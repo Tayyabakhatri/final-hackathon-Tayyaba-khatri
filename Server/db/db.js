@@ -4,7 +4,7 @@ const url = process.env.MONGODB_URL
 console.log(url);
 import chalk from "chalk";
 const connectedToDb = async () => {
-    // mongoose.connection.on("connected", () => console.log("✅ DB Connected"));
+    mongoose.connection.on("connected", () => console.log("✅ DB Connected"));
 
     try {
         await mongoose.connect(url, { dbname: "finalHackathonDB" });
