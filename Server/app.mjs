@@ -27,7 +27,9 @@ connectedToDb()
 app.use('/api/auth',userRoutes)
 
 
-
+// app.get('*', (req, res) => {
+// 	res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+// });
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
