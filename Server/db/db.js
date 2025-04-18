@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 dotenv.config()
 // import "dotenv/config"
 
-const url = process.env.MONGODB_URL
-
+// const url = process.env.MONGODB_URL
+const url="mongodb+srv://Tayyabakhatri:1234567890@cluster0.4piwx.mongodb.net/finalHackathonDB?retryWrites=true&w=majority&appName=Cluster0"
 
 console.log("mongo db url", url);
 import chalk from "chalk";
