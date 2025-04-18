@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
-import "dotenv/config"
+import dotenv from "dotenv";
+dotenv.config()
+// import "dotenv/config"
 const url = process.env.MONGODB_URL
-console.log(url);
+console.log("mongo db url",url);
 import chalk from "chalk";
 const connectedToDb = async () => {
     mongoose.connection.on("connected", () => console.log("✅ DB Connected"));
