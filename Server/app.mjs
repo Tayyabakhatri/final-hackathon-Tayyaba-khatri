@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000
 
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174', "final-hackathon-tayyaba-khatri-production.up.railway.app"],
+    origin: ['http://localhost:5173', 'http://localhost:5174', "https://final-hackathon-tayyaba-khatri-production.up.railway.app"],
     methods: ["GET", "PUT", 'POST', "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"]
