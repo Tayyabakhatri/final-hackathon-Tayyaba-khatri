@@ -1,7 +1,8 @@
 // LoginForm.jsx
 import React, { useState } from "react";
 import { Mail, Lock } from "lucide-react"; // optional icons
-
+const apiUrl = import.meta.env.VITE_BASE_URL // Replace with your actual API URL
+console.log(apiUrl);
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -21,7 +22,7 @@ const LoginForm = () => {
       console.log(formData);
   
       try {
-        const response = await fetch("http://localhost:3000/api/auth/login", {
+        const response = await fetch(`${apiUrl}/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
