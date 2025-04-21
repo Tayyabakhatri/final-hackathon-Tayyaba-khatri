@@ -3,8 +3,10 @@ import cors from "cors"
 import path from "path"
 import connectedToDb from "./db/db.js"
 import userRoutes from "./Routes/userRoutes.js"
+import "dotenv/config"
 
-
+const baseUrl = process.env.BASE_URL
+console.log("Base URL:", baseUrl); // Log the base URL for debugging
 
 
 const app = express()
@@ -13,18 +15,18 @@ const port = process.env.PORT || 3000
 
 
 app.use(cors({
-    origin:['http://localhost:5173','http://localhost:5174',"final-hackathon-tayyaba-khatri-production.up.railway.app"],
-    methods:["GET","PUT",'POST',"DELETE"],
+    origin: ['http://localhost:5173', 'http://localhost:5174', "final-hackathon-tayyaba-khatri-production.up.railway.app"],
+    methods: ["GET", "PUT", 'POST', "DELETE"],
     credentials: true,
-    allowedHeaders:["Content-Type","Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"]
 }))
 
 const __dirname = path.resolve()
-app.use(express.static(path.join(__dirname,"/dist")))
+app.use(express.static(path.join(__dirname, "/dist")))
 
 connectedToDb()
 
-app.use('/api/auth',userRoutes)
+app.use('/api/auth', userRoutes)
 
 
 // app.get('*', (req, res) => {

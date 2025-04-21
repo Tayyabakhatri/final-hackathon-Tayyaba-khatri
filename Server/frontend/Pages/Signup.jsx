@@ -2,7 +2,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mail, Lock, User } from "lucide-react";
-import axios from "axios";
+const apiUrl = import.meta.env.VITE_BASE_URL // Replace with your actual API URL
+console.log(apiUrl);
+
+
 import { toast } from "react-toastify";
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -30,7 +33,7 @@ const SignupForm = () => {
       }
 
       // ✅ Axios POST request
-      const response = await fetch("http://localhost:3000/api/auth/signup", {
+      const response = await fetch(`${apiUrl}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -53,9 +56,6 @@ const SignupForm = () => {
         console.error("Error response:", errorText);
         toast.error(errorText); // Shows what the server actually returned
       }
-
-      // ✅ Assuming your server responds with { success: true, message: "...", etc. }
-      console.log("Server response:", response.data);
     } catch (err) {
       console.error("Signup error:", err);
       const message =
