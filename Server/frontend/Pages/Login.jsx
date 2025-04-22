@@ -1,9 +1,15 @@
 // LoginForm.jsx
 import React, { useState } from "react";
-import { Mail, Lock } from "lucide-react"; // optional icons
-const apiUrl = import.meta.env.VITE_BASE_URL // Replace with your actual API URL
+import { useNavigate } from "react-router-dom";
+import { Mail, Lock } from "lucide-react"; // icons
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+const apiUrl = import.meta.env.VITE_BASE_URL;
 console.log(apiUrl);
 const LoginForm = () => {
+  const dispatch = useDispatch(); // for redux state management
+  const navigate = useNavigate(); // for navigation
+  const [loading, setLoading] = useState(false); // for loading state
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,60 +22,57 @@ const LoginForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      console.log(formData);
-  
-      try {
-        const response = await fetch(`${apiUrl}/auth/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-        setLoading(true);
-        const data = await response.json();
-        console.log("server Response", data);
-  
-        if (response.ok) {
-          console.log(data);
-  
-          toast.success(data.message);
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("userId", data.user);
-          localStorage.setItem("role", data.role);
-          
-          // if (data.role === "admin") {
-          //   toast.success("You are an admin");
-          //   navigate("/admin");
-          // } else {
-          //   navigate("/");
-          // }
-          dispatch(
-            login({
-              token: data.token,
-              userid: data.user,
-            })
-          );
-  
-          // ✅ Navigate based on user role
-         
-        } else {
-          toast.error(data.message || "Invalid email or password");
-        }
-  
-        // navigate("/");
-      } catch (e) {
-        console.log(e.message);
-        toast.error(e.message || "Failed to register. Please try again.");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+
+    try {
+      const response = await fetch(`${apiUrl}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      setLoading(true);
+      const data = await response.json();
+      console.log("server Response", data);
+
+      if (response.ok) {
+        console.log(data);
+
+        toast.success(data.message);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.user);
+        localStorage.setItem("role", data.role);
+        navigate("/")
+        // if (data.role === "admin") {
+        //   toast.success("You are an admin");
+        //   navigate("/admin");
+        // } else {
+        //   navigate("/");
+        // }
+        // dispatch(
+        //   logIn({
+        //     token: data.token,
+        //     userid: data.user,
+        //   })
+        // );
+
+        // ✅ Navigate based on user role
+      } else {
+        toast.error(data.message || "Invalid email or password");
       }
-    };
+    } catch (e) {
+      console.log(e.message);
+      toast.error(e.message || "Failed to register. Please try again.");
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-purple-100 via-white to-blue-100 px-4">
       <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-md transform transition-all duration-300">
-        <h2 className="text-3xl font-extrabold text-center mb-8 text-gray-800">Welcome Back</h2>
+        <h2 className="text-3xl font-extrabold text-center mb-8 text-gray-800">
+          Welcome Back
+        </h2>
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="relative">
             <label className="text-gray-600 font-medium">Email</label>

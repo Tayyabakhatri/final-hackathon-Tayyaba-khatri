@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
-import SignupForm from "../Pages/Signup.jsx";
 import { ToastContainer } from "react-toastify";
 import { Route, Routes } from "react-router-dom";
+import SignupForm from "../Pages/Signup.jsx";
 import Login from "../Pages/Login.jsx";
+import Homepage from "../Pages/Homepage.jsx";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SignupForm />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Homepage/>}/>
       </Routes>
     </>
   );

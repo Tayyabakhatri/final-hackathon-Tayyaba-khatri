@@ -1,6 +1,9 @@
 import userSchema from "../Schema/userSchema.js"
 import User from "../Model/userModel.js";
 import bcrypt from "bcrypt"
+import chalk from "chalk";
+import jwt from "jsonwebtoken"
+import "dotenv/config"
 
 export  const createUser = async (req, res) => {
     try {
@@ -72,8 +75,8 @@ export  const createUser = async (req, res) => {
             role:user.role
         })
     } catch (error) {
-        console.log(chalk.bgRed.white(error));
-        res.status(500).json({ message: "Internal server error", error });
+        console.log(chalk.bgRed.white(error.message));
+        res.status(500).json({ message: "Internal server error", error});
     }
 }
 // export default createUser

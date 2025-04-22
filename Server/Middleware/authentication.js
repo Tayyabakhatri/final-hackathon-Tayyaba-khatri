@@ -9,9 +9,9 @@ const authentication = async (req, res, next) => {
 
     } else {
         try {
-            const token = req.headers.authentication.trim().split(" ")[1]
+            const token = req.headers.authorization.trim().split(' ')[1]
             console.log(token);
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            const decoded = jwt.verify(token, process.env.JWT_SECRETKEY);
             console.log(chalk.blue("Decoded token: "), decoded);
             console.log(chalk.blue(decoded._doc.username));
 
