@@ -5,7 +5,7 @@ import chalk from "chalk";
 import jwt from "jsonwebtoken"
 import "dotenv/config"
 
-export  const createUser = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
         console.log("received body", req.body);
 
@@ -36,7 +36,7 @@ export  const createUser = async (req, res) => {
     }
 }
 //loginUser
- export const loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
     try {
         if (!req.body.email || !req.body.password) {
             console.log(chalk.bgCyan.blue("email or password not found"));
@@ -72,11 +72,33 @@ export  const createUser = async (req, res) => {
             message: "user Sign in",
             user: user.id,
             token,
-            role:user.role
+            role: user.role
         })
     } catch (error) {
         console.log(chalk.bgRed.white(error.message));
-        res.status(500).json({ message: "Internal server error", error});
+        res.status(500).json({ message: "Internal server error", error });
     }
 }
-// export default createUser
+// logout user 
+export const logoutUser = async (req, res) => {
+    try {
+        const { id } = req.params
+        const deleteUser = await User.findAndDelete(id)
+        if (!deleteUser) {
+            return res.status(404).json({
+                message: "user not found",
+            })
+        } else {
+            res.status(200).json({
+                userId: id,
+                success: true,
+                message: "user has been deleted",
+                user: deleteUser
+            })
+        }
+    } catch (error) {
+        console.log(chalk.bgRed.white(error.message));
+        res.status(500).json({ message: "Internal server error", error });
+    }
+}
+

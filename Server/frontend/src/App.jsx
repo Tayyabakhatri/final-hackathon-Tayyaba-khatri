@@ -2,9 +2,10 @@ import React from "react";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import { Route, Routes } from "react-router-dom";
-import SignupForm from "../Pages/Signup.jsx";
-import Login from "../Pages/Login.jsx";
-import Homepage from "../Pages/Homepage.jsx";
+import SignupForm from "../src/Pages/Signup.jsx";
+import Login from "../src/Pages/Login.jsx";
+import Homepage from "../src/Pages/Homepage.jsx";
+import Navbar from "./Componenet/Navbar.jsx";
 
 function App() {
   return (
@@ -20,10 +21,11 @@ function App() {
         draggable
         pauseOnHover
       />
+      <Navbar />
       <Routes>
-        <Route path="/" element={<SignupForm />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Homepage/>}/>
+        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );
