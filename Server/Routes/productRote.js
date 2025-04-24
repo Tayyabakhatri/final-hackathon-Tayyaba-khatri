@@ -1,9 +1,12 @@
 import express from "express";
 import multer from "multer";
+// import {cloudinaryStorage} from "multer-storage-cloudinary"
+import pkg from "multer-storage-cloudinary";
 import cloudinary from "../cloudinary/cloudConfig.js";
 import {uploadImage,gettingImages} from "../Controller/productController.js";
 import authentication from "../Middleware/authentication.js"
- 
+
+const { CloudinaryStorage } = pkg;
 
 const router= express.Router()
 const storage = new CloudinaryStorage({
@@ -18,3 +21,5 @@ const upload = multer({ storage });
 
 router.post("/upload",authentication,upload.single("image"), uploadImage);
 router.get("/gettingproduct",gettingImages)
+
+export default router

@@ -31,7 +31,7 @@ const Navbar = () => {
                   <Link to="/signup" text="SIGNUP" className="mx-3">
                     SIGNUP
                   </Link>
-                  <Link to="/signin" text="LOGIN">
+                  <Link to="/login" text="LOGIN">
                     LOGIN
                   </Link>
                 </>
