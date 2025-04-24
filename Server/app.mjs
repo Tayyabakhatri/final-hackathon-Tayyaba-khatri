@@ -3,6 +3,7 @@ import cors from "cors"
 import path from "path"
 import connectedToDb from "./db/db.js"
 import userRoutes from "./Routes/userRoutes.js"
+import productRoutes from "./Routes/productRote.js"
 import "dotenv/config"
 
 const baseUrl = process.env.BASE_URL
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, "/dist")))
 connectedToDb()
 
 app.use('/api/auth', userRoutes)
+app.use('/api/product', productRoutes)
 
 
 // app.get('*', (req, res) => {
