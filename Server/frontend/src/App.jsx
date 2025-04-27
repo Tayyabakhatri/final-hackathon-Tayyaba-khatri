@@ -24,7 +24,7 @@ function App() {
         draggable
         pauseOnHover
       />
-      <TaskForm/>
+      {/* <TaskForm/> */}
       <Navbar />
       <Routes>
         <Route path="/home" element={<Homepage />} />

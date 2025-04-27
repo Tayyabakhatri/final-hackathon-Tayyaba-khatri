@@ -53,7 +53,7 @@ const Homepage = () => {
         <h1 className="text-2xl font-bold mb-6 text-center">
           Task Manager Board
         </h1>
-          {/* <TaskForm/> */}
+          <TaskForm/>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <TodoColumn tasks={tasks.filter((task) => task.status === "To Do")} />
