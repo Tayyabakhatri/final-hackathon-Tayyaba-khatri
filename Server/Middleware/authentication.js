@@ -3,7 +3,7 @@ import User  from '../Model/userModel.js'
 import "dotenv/config"
 import chalk from 'chalk'
 
-const authentication = async (req, res, next) => {
+ export const authentication = async (req, res, next) => {
     if (!req.headers.authentication) {
         return res.status(401).json({ message: "Authentication token not provided" })
 

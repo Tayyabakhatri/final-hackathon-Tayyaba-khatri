@@ -43,7 +43,7 @@ const LoginForm = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.user);
         localStorage.setItem("role", data.role);
-        navigate("/")
+        navigate("/home")
         // if (data.role === "admin") {
         //   toast.success("You are an admin");
         //   navigate("/admin");

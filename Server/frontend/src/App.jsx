@@ -7,6 +7,8 @@ import Login from "../src/Pages/Login.jsx";
 import Homepage from "../src/Pages/Homepage.jsx";
 import Navbar from "./Componenet/Navbar.jsx";
 import Logout from "./Componenet/logout.jsx";
+import TaskForm from "./Componenet/TaskForm.jsx";
+
 
 function App() {
   return (
@@ -22,13 +24,15 @@ function App() {
         draggable
         pauseOnHover
       />
+      <TaskForm/>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage/>}/>
+        <Route path="/home" element={<Homepage />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<Login />} />
-        <Route path = "/logout" element={<Logout/>}/>
+        <Route path="/logout" element={<Logout />} />
       </Routes>
+     
     </>
   );
 }

@@ -63,7 +63,7 @@ const Navbar = () => {
               </button>
             </div>
 
-            <div
+            {/* <div
               className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
               id="navbar-sticky"
             >
@@ -87,7 +87,7 @@ const Navbar = () => {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
         </nav>
       </div>
