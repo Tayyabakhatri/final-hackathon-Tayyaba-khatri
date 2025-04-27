@@ -15,7 +15,7 @@ export const createTask = async (req, res) => {
         const newTask = await new databaseTaskSchema({ ...validatedTask });
         console.log(newTask);
         
-        await newTask.save();
+        await newTask.save()
 
 
         res.status(201).json({
