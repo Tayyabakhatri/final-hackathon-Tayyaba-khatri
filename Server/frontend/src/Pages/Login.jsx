@@ -44,18 +44,6 @@ const LoginForm = () => {
         localStorage.setItem("userId", data.user);
         localStorage.setItem("role", data.role);
         navigate("/home")
-        // if (data.role === "admin") {
-        //   toast.success("You are an admin");
-        //   navigate("/admin");
-        // } else {
-        //   navigate("/");
-        // }
-        // dispatch(
-        //   logIn({
-        //     token: data.token,
-        //     userid: data.user,
-        //   })
-        // );
 
         // ✅ Navigate based on user role
       } else {
