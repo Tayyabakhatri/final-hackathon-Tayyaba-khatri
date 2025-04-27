@@ -44,7 +44,7 @@ const LoginForm = () => {
         localStorage.setItem("userId", data.user);
         localStorage.setItem("role", data.role);
         if (data.role === "user") {
-          navigate("/");
+          navigate("/home");
 
           // ✅ Navigate based on user role
         } else {
