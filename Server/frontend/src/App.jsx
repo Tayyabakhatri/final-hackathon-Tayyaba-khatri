@@ -27,7 +27,7 @@ function App() {
       {/* <TaskForm/> */}
       <Navbar />
       <Routes>
-        <Route path="/home" element={<Homepage />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />

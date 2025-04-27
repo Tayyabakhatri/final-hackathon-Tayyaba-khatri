@@ -43,11 +43,13 @@ const LoginForm = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.user);
         localStorage.setItem("role", data.role);
-        navigate("/home")
+        if (data.role === "user") {
+          navigate("/");
 
-        // ✅ Navigate based on user role
-      } else {
-        toast.error(data.message || "Invalid email or password");
+          // ✅ Navigate based on user role
+        } else {
+          toast.error(data.message || "Invalid email or password");
+        }
       }
     } catch (e) {
       console.log(e.message);
