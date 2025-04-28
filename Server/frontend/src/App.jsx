@@ -7,7 +7,7 @@ import Login from "../src/Pages/Login.jsx";
 import Homepage from "../src/Pages/Homepage.jsx";
 import Navbar from "./Componenet/Navbar.jsx";
 import Logout from "./Componenet/logout.jsx";
-// import TaskForm from "./Componenet/TaskForm.jsx";
+import Hero from "./Pages/Hero.jsx";
 
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
       />
       <Navbar />
       <Routes>
+        <Route path="/" element={<Hero />} />
         <Route path="/home" element={<Homepage />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<Login />} />

@@ -37,6 +37,7 @@ export const createUser = async (req, res) => {
 }
 //loginUser
 export const loginUser = async (req, res) => {
+    console.log("login body", req.body.email,req.body.password);
     try {
         if (!req.body.email || !req.body.password) {
             console.log(chalk.bgCyan.blue("email or password not found"));
@@ -55,6 +56,8 @@ export const loginUser = async (req, res) => {
                 message: "invalid credentials"
             })
         }
+        console.log(chalk.bgCyan.blue("user found"), user);
+        
         //then match pasword
         const compare = await bcrypt.compare(req.body.password, user.password)
         if (!compare) {
@@ -64,13 +67,13 @@ export const loginUser = async (req, res) => {
             })
         }
 
-        var token = jwt.sign({ ...user }, process.env.JWT_SECRETKEY)
+        const token = jwt.sign( { id: user._id, email: user.email, role: user.role }, process.env.JWT_SECRETKEY)
         console.log(chalk.bgBlue.white(token));
 
         res.status(200).json({
             success: true,
             message: "user Sign in",
-            user: user.id,
+            user: user._id,
             token,
             role: user.role
         })
