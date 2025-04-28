@@ -1,6 +1,9 @@
 import React from "react";
 
 const InProgressColumn = ({ tasks }) => {
+  if(!tasks.status==="in-progress"){
+    return null; // Don't render if status is not "in-progress"
+  }
   return (
     // <>inprogress</>
     <>

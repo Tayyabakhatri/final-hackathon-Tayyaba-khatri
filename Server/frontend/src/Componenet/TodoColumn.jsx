@@ -2,6 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const TodoColumn = ({ tasks }) => {
+  if(!tasks.status==="pending"){
+    return null; // Don't render if status is not "pending"
+  }
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   return (
     <div className="bg-blue-100 rounded-2xl p-4 w-full shadow-md">

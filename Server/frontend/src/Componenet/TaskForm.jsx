@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 
 const apiUrl = import.meta.env.VITE_BASE_URL;
+console.log(apiUrl);
+
 
 const CreateTaskForm = () => {
   const [title, setTitle] = useState("");
@@ -86,13 +88,13 @@ const CreateTaskForm = () => {
         <option value="completed">Completed</option>
       </select>
 
-      {/* <input
+      <input
         type="date"
         value={dueDate}
         onChange={(e) => setDueDate(e.target.value)}
         required
         className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-      /> */}
+      />
 
       <button
         type="submit"

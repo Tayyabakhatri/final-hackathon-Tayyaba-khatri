@@ -4,7 +4,7 @@ const databaseTaskSchema = mongoose.Schema({
     description: { type: String, required: true },
     assignedTo: { type: String, required: true }, // <-- ADD THIS
     status: { type: String, default: "pending", enum: ["pending", "in-progress", "completed"] },
-    // duedate: { type: Date }
+    duedate: { type: Date }
   });
   
 export default mongoose.model("Tasks", databaseTaskSchema);

@@ -4,11 +4,11 @@ import logo from "../assets/logo.webp";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-    const isAuthenticated = useSelector((state) => state.auth);
-    console.log(isAuthenticated?.isAuthenticated);
-    console.log(isAuthenticated?.role);
+  const isAuthenticated = useSelector((state) => state.auth);
+  console.log(isAuthenticated?.isAuthenticated);
+  console.log(isAuthenticated?.role);
 
-    //
+  //
   return (
     <>
       <div>
@@ -34,9 +34,9 @@ const Navbar = () => {
                   <Link to="/login" text="LOGIN">
                     LOGIN
                   </Link>
+                  <Link to="/home" className="mx-3">Dashboard</Link>
                 </>
               )}
-
               <button
                 data-collapse-toggle="navbar-sticky"
                 type="button"

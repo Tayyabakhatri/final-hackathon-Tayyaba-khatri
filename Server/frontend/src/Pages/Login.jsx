@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Mail, Lock } from "lucide-react"; // icons
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-const apiUrl = import.meta.env.VITE_BASE_URL;
-console.log(apiUrl);
+
 const LoginForm = () => {
+  const apiUrl = import.meta.env.VITE_BASE_URL;
+  console.log(apiUrl);
   const dispatch = useDispatch(); // for redux state management
   const navigate = useNavigate(); // for navigation
   const [loading, setLoading] = useState(false); // for loading state
@@ -27,12 +28,12 @@ const LoginForm = () => {
     console.log(formData);
 
     try {
+      setLoading(true);
       const response = await fetch(`${apiUrl}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      setLoading(true);
       const data = await response.json();
       console.log("server Response", data);
 
@@ -43,13 +44,14 @@ const LoginForm = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.user);
         localStorage.setItem("role", data.role);
-        if (data.role === "user") {
-          navigate("/home");
+        navigate("/home");
+        // if (data.role === "user") {
+        //   navigate("/home");
 
-          // ✅ Navigate based on user role
-        } else {
-          toast.error(data.message || "Invalid email or password");
-        }
+        //   // ✅ Navigate based on user role
+        // } else {
+        //   toast.error(data.message || "Invalid email or password");
+        // }
       }
     } catch (e) {
       console.log(e.message);

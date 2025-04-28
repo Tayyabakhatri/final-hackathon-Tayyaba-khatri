@@ -6,8 +6,6 @@ import userRoutes from "./Routes/userRoutes.js"
 import taskRoutes from "./Routes/taskRoutes.js"
 import "dotenv/config"
 
-const baseUrl = process.env.BASE_URL
-console.log("Base URL:", baseUrl); // Log the base URL for debugging
 
 
 const app = express()
