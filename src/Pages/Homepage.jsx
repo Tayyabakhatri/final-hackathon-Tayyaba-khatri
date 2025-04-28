@@ -24,7 +24,7 @@ const Homepage = () => {
     const fetchTasks = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await fetch(`${apiUrl}/tasks/taskss`, {
+        const response = await fetch(`${apiUrl}/api/tasks/taskss`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
